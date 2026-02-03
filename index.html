@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Urban Master — The City Operating System</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <style>
         :root {
             --swiggy-orange: #FC8019;
@@ -19,7 +20,10 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: var(--off-white);
             color: var(--carbon-ink);
-            padding-top: 0; /* Resetting for fixed nav handling */
+            padding-top: 0;
+            overflow-x: hidden; /* Prevents horizontal scroll from decorative elements */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         .swiggy-gradient {
@@ -41,136 +45,228 @@
             display: none;
         }
 
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
         .glass {
-            background: rgba(255, 255, 255, 0.75);
+            background: rgba(255, 255, 255, 0.85); /* Slightly increased opacity for legibility */
             backdrop-filter: blur(20px) saturate(180%);
             -webkit-backdrop-filter: blur(20px) saturate(180%);
         }
 
         @keyframes bounce-slow {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
         }
 
         .animate-bounce-slow {
             animation: bounce-slow 5s ease-in-out infinite;
         }
+        
+        /* Utility for text balance */
+        .text-balance {
+            text-wrap: balance;
+        }
     </style>
 </head>
 
-<body class="antialiased">
-    <nav class="fixed top-0 inset-x-0 z-[100] px-4 md:px-6 py-4">
-        <div class="max-w-7xl mx-auto">
-            <div class="glass shadow-[0_8px_32px_0_rgba(40,44,63,0.08)] border border-white/40 rounded-[24px] px-4 md:px-8 h-20 flex items-center justify-between transition-all duration-500 hover:shadow-[0_12px_40px_0_rgba(252,128,25,0.12)]">
+<body class="antialiased selection:bg-orange-100 selection:text-orange-900">
+    
+    <nav class="fixed top-0 inset-x-0 z-[100] px-4 md:px-6 py-4 w-full">
+        <div class="max-w-7xl mx-auto w-full">
+            <div
+                class="glass shadow-[0_8px_32px_0_rgba(40,44,63,0.08)] border border-white/40 rounded-[24px] px-4 md:px-8 h-20 flex items-center justify-between transition-all duration-500 hover:shadow-[0_12px_40px_0_rgba(252,128,25,0.12)]">
 
-                <div class="flex items-center gap-4 group cursor-pointer">
-                    <div class="relative">
-                        <div class="w-10 h-10 swiggy-gradient rounded-[12px] flex items-center justify-center text-white font-black italic shadow-lg shadow-orange-200/50 group-hover:rotate-[10deg] transition-transform duration-300">
+                <div class="flex items-center gap-3 md:gap-4 group cursor-pointer">
+                    <div class="relative flex-shrink-0">
+                        <div
+                            class="w-10 h-10 swiggy-gradient rounded-[12px] flex items-center justify-center text-white font-black italic shadow-lg shadow-orange-200/50 group-hover:rotate-[10deg] transition-transform duration-300">
                             U
                         </div>
                         <span class="absolute -top-1 -right-1 flex h-3 w-3">
-                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                            <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500 border-2 border-white"></span>
+                            <span
+                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                            <span
+                                class="relative inline-flex rounded-full h-3 w-3 bg-green-500 border-2 border-white"></span>
                         </span>
                     </div>
 
-                    <div class="flex flex-col">
-                        <span class="text-sm md:text-xl font-[900] tracking-[-0.03em] text-[#282C3F] leading-none uppercase">URBAN MASTER</span>
-                        <span class="text-[8px] md:text-[9px] font-black uppercase tracking-[0.25em] text-[#FC8019] mt-1 opacity-80">Infrastructure</span>
+                    <div class="flex flex-col justify-center">
+                        <span
+                            class="text-sm md:text-xl font-[900] tracking-[-0.03em] text-[#282C3F] leading-none uppercase">URBAN
+                            MASTER</span>
+                        <span
+                            class="text-[8px] md:text-[9px] font-black uppercase tracking-[0.25em] text-[#FC8019] mt-1 opacity-80 leading-none">The
+                            City App</span>
                     </div>
                 </div>
 
-                <div class="hidden lg:flex items-center gap-10">
-                    <a href="#how" class="text-[11px] font-black uppercase tracking-[0.2em] text-[#282C3F]/60 hover:text-[#FC8019] transition-colors">Framework</a>
-                    <a href="#vision" class="text-[11px] font-black uppercase tracking-[0.2em] text-[#282C3F]/60 hover:text-[#FC8019] transition-colors">The Vision</a>
-                    <div class="h-4 w-[1px] bg-slate-200"></div>
-                    <div class="flex items-center gap-2">
-                        <span class="text-[11px] font-black uppercase tracking-[0.2em] text-[#282C3F]">English</span>
-                        <span class="text-[11px] font-black uppercase tracking-[0.2em] text-slate-300">मराठी</span>
-                    </div>
-                </div>
 
                 <div class="flex items-center gap-4">
-                    <div class="hidden sm:flex flex-col items-end mr-4">
-                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-tighter">System Status</span>
-                        <span class="text-[11px] font-black text-green-600 uppercase tracking-tight leading-none">Operational</span>
-                    </div>
-
-                    <a href="#download" class="relative group overflow-hidden bg-[#282C3F] text-white px-5 md:px-7 py-3 md:py-3.5 rounded-[14px] font-bold text-[10px] md:text-xs uppercase tracking-widest transition-all duration-300 hover:shadow-[0_10px_20px_-5px_rgba(40,44,63,0.4)] active:scale-95">
+                    <a href="#download"
+                        class="relative group overflow-hidden bg-[#282C3F] text-white px-5 md:px-7 py-3 md:py-3.5 rounded-[14px] font-bold text-[10px] md:text-xs uppercase tracking-widest transition-all duration-300 hover:shadow-[0_10px_20px_-5px_rgba(40,44,63,0.4)] active:scale-95 flex-shrink-0">
                         <span class="relative z-10">Download App</span>
-                        <div class="absolute inset-0 bg-[#FC8019] translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300"></div>
+                        <div
+                            class="absolute inset-0 bg-[#FC8019] translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300">
+                        </div>
                     </a>
                 </div>
             </div>
         </div>
     </nav>
+    
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-    <section class="relative min-h-screen flex items-center pt-32 pb-24 overflow-hidden bg-white">
-        <div class="absolute top-0 right-0 w-1/3 h-full bg-[#F1F1F6] z-0 hidden lg:block"></div>
+    <section class="relative min-h-[90vh] md:min-h-screen flex items-center pt-32 pb-16 md:pb-24 overflow-hidden bg-white">
+        <div
+            class="absolute top-0 right-0 w-full md:w-1/2 h-full bg-[#F8F9FC] z-0 hidden lg:block skew-x-[-12deg] origin-top translate-x-20">
+        </div>
+        <div class="absolute top-[-10%] right-[-10%] md:right-[-5%] w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-orange-500/5 blur-[80px] md:blur-[120px] rounded-full pointer-events-none">
+        </div>
 
-        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center relative z-10">
-            <div class="max-w-xl text-center lg:text-left">
-                <div class="inline-flex items-center gap-3 mb-8 justify-center lg:justify-start">
-                    <span class="w-12 h-[2px] bg-[#FC8019]"></span>
-                    <span class="text-xs font-black uppercase tracking-[0.3em] text-[#FC8019]">Civic Infrastructure 2026</span>
+        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center relative z-10 w-full">
+            <div class="max-w-xl mx-auto lg:mx-0 text-center lg:text-left order-2 lg:order-1">
+                <div class="inline-flex items-center gap-3 mb-6 md:mb-8 justify-center lg:justify-start">
+                    <span class="w-8 md:w-12 h-[2px] bg-[#FC8019]"></span>
+                    <span class="text-[10px] md:text-xs font-black uppercase tracking-[0.3em] text-[#FC8019]">Digital Sovereignty
+                        2026</span>
                 </div>
 
-                <h1 class="text-5xl md:text-8xl font-[800] leading-[1] text-[#282C3F] tracking-tighter mb-10">
-                    The City <br>
-                    <span class="text-[#FC8019]">Operating</span> <br>
+                <h1 class="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-[800] leading-[1.1] md:leading-[1] text-[#282C3F] tracking-tighter mb-6 md:mb-10 text-balance">
+                    The City <br class="hidden sm:block">
+                    <span class="text-[#FC8019]">Operating</span> <br class="hidden sm:block">
                     System.
                 </h1>
 
-                <p class="text-lg md:text-2xl text-slate-500 font-medium leading-relaxed mb-12">
-                    Urban Master is a free, digital public utility that consolidates verified city services, market data, and emergency response into one sovereign interface.
+                <p class="text-base sm:text-lg md:text-2xl text-slate-500 font-medium leading-relaxed mb-8 md:mb-12 max-w-lg mx-auto lg:mx-0">
+                    Urban Master is a flagship digital public utility. We consolidate verified governance, localized
+                    markets, and emergency response into one photorealistic, sovereign interface.
                 </p>
 
                 <div class="flex flex-col sm:flex-row items-center gap-6 justify-center lg:justify-start">
-                    <a href="#download" class="w-full sm:w-auto bg-[#FC8019] text-white px-12 py-6 rounded-2xl font-extrabold text-xl shadow-2xl shadow-orange-200 hover:bg-[#E67316] transition-all transform hover:-translate-y-1 text-center">
-                        Download App
+                    <a href="#download"
+                        class="w-full sm:w-auto bg-[#FC8019] text-white px-8 md:px-12 py-4 md:py-6 rounded-2xl font-extrabold text-lg md:text-xl shadow-[0_20px_40px_-10px_rgba(252,128,25,0.4)] hover:bg-[#E67316] transition-all transform hover:-translate-y-1 text-center">
+                        Get Urban Master
                     </a>
                 </div>
             </div>
 
-            <div class="relative w-full max-w-[400px] mx-auto lg:max-w-none">
-                <div class="absolute inset-0 bg-orange-500/10 blur-[80px] md:blur-[120px] rounded-full"></div>
+            <div class="relative flex justify-center lg:justify-end order-1 lg:order-2 mb-8 lg:mb-0" x-data="{ activeTab: 1 }">
+                <div class="absolute bottom-[-30px] md:bottom-[-50px] w-[60%] md:w-[80%] h-[40px] bg-black/10 blur-3xl rounded-full scale-x-110">
+                </div>
 
-                <div class="relative z-10">
-                    <div class="bg-[#282C3F] p-3 md:p-4 rounded-[2.5rem] md:rounded-[3rem] shadow-[0_50px_100px_-20px_rgba(40,44,63,0.3)] border-[6px] md:border-[8px] border-[#1A1D29] w-full max-w-[320px] md:max-w-[400px] mx-auto transform rotate-2">
-                        <div class="bg-white rounded-[1.8rem] md:rounded-[2.2rem] overflow-hidden aspect-[9/19] relative">
-                            <div class="p-4 md:p-6 pb-2 flex justify-between items-center">
-                                <div class="flex flex-col">
-                                    <span class="text-[8px] md:text-[10px] font-bold text-slate-400 uppercase">Your City</span>
-                                    <span class="text-xs md:text-sm font-black text-[#282C3F]">Hinganghat</span>
-                                </div>
-                                <div class="w-8 h-8 md:w-10 md:h-10 bg-slate-100 rounded-full flex items-center justify-center text-sm md:text-lg">🔔</div>
-                            </div>
+                <div class="relative z-10 w-full max-w-[320px] md:max-w-[420px] lg:mr-10">
+                    <div
+                        class="relative bg-[#0F1115] p-3 rounded-[3rem] md:rounded-[3.5rem] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] border-[1px] border-white/10 transform rotate-0 lg:-rotate-6 transition-transform hover:rotate-0 duration-700">
 
-                            <div class="p-3 md:p-4">
-                                <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=600&q=80" alt="City Infrastructure" class="w-full h-32 md:h-48 object-cover rounded-2xl md:rounded-3xl mb-4 md:mb-6">
+                        <div
+                            class="bg-white rounded-[2.5rem] md:rounded-[2.8rem] overflow-hidden aspect-[9/19] relative border-[4px] border-[#1A1D29]">
 
-                                <div class="grid grid-cols-2 gap-2 md:gap-3 mb-4">
-                                    <div class="bg-orange-50 p-3 md:p-4 rounded-xl md:rounded-2xl border border-orange-100">
-                                        <div class="text-lg md:text-xl mb-1">📢</div>
-                                        <div class="h-1 md:h-2 w-8 md:w-12 bg-orange-200 rounded-full"></div>
+                            <div class="h-full flex flex-col bg-[#FDFDFD]">
+                                <div class="bg-[#FC8019] p-5 md:p-6 pt-8 md:pt-10 text-white rounded-b-[2.5rem] shadow-lg">
+                                    <div class="flex justify-between items-start mb-4">
+                                        <div class="bg-white/20 px-3 py-1 rounded-full text-[10px] font-bold backdrop-blur-sm">
+                                            <i class="fas fa-location-dot mr-1"></i> Hinganghat, MH
+                                        </div>
+                                        <div class="w-8 h-8 md:w-10 md:h-10 rounded-full border-2 border-white/30 overflow-hidden flex-shrink-0">
+                                            <img src="https://i.pravatar.cc/100?u=himanshu" alt="Profile" class="w-full h-full object-cover">
+                                        </div>
                                     </div>
-                                    <div class="bg-blue-50 p-3 md:p-4 rounded-xl md:rounded-2xl border border-blue-100">
-                                        <div class="text-lg md:text-xl mb-1">📈</div>
-                                        <div class="h-1 md:h-2 w-8 md:w-12 bg-blue-200 rounded-full"></div>
+                                    <h3 class="text-xl md:text-2xl font-black">Hello, John 👋</h3>
+                                    <p class="text-xs md:text-sm opacity-90">Welcome to Urban Master</p>
+                                </div>
+
+                                <div class="p-4 md:p-5 space-y-4 overflow-y-auto no-scrollbar pb-24">
+                                    <div
+                                        class="bg-orange-50 border border-orange-100 p-4 rounded-3xl relative overflow-hidden group">
+                                        <div class="relative z-10">
+                                            <span
+                                                class="text-[10px] font-bold text-orange-600 uppercase tracking-widest">Featured
+                                                Service</span>
+                                            <h4 class="font-black text-[#282C3F] mt-1 text-sm md:text-base">Trusted Local Services</h4>
+                                            <div class="flex gap-2 mt-3">
+                                                <div
+                                                    class="bg-white p-2 rounded-xl shadow-sm text-[10px] md:text-xs text-center flex-1">
+                                                    <i class="fas fa-bolt text-orange-500 block mb-1"></i> Elec
+                                                </div>
+                                                <div
+                                                    class="bg-white p-2 rounded-xl shadow-sm text-[10px] md:text-xs text-center flex-1">
+                                                    <i class="fas fa-faucet text-blue-500 block mb-1"></i> Plumb
+                                                </div>
+                                                <div
+                                                    class="bg-white p-2 rounded-xl shadow-sm text-[10px] md:text-xs text-center flex-1">
+                                                    <i class="fas fa-shield-halved text-green-500 block mb-1"></i> CCTV
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="space-y-3">
+                                        <div class="flex justify-between items-center">
+                                            <h5 class="font-bold text-sm text-slate-800 tracking-tight">Active Listings
+                                            </h5>
+                                            <span class="text-[10px] text-orange-500 font-bold uppercase cursor-pointer">View
+                                                All</span>
+                                        </div>
+                                        <div
+                                            class="bg-white border border-slate-100 p-3 rounded-2xl flex gap-3 md:gap-4 items-center shadow-sm">
+                                            <div
+                                                class="w-14 h-14 md:w-16 md:h-16 bg-slate-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                                                <i class="fas fa-tractor text-slate-400"></i>
+                                            </div>
+                                            <div class="flex-1 min-w-0">
+                                                <p class="text-xs font-black text-slate-800 truncate">Cotton Agro Farm...</p>
+                                                <div class="flex items-center gap-2 mt-1">
+                                                    <span
+                                                        class="bg-green-100 text-green-700 text-[8px] px-1.5 py-0.5 rounded font-bold">5.0
+                                                        ★</span>
+                                                    <span class="text-[10px] text-slate-400 italic">Hinganghat</span>
+                                                </div>
+                                                <p class="text-xs font-bold text-orange-600 mt-1">From ₹2000.00</p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 
-                                <div class="bg-slate-50 p-4 md:p-6 rounded-2xl md:rounded-3xl space-y-2 md:space-y-3">
-                                    <div class="h-2 md:h-3 w-3/4 bg-slate-200 rounded-full"></div>
-                                    <div class="h-2 md:h-3 w-1/2 bg-slate-200 rounded-full"></div>
+                                <div
+                                    class="absolute bottom-0 inset-x-0 p-3 md:p-4 bg-white/80 backdrop-blur-md border-t border-slate-100 flex justify-around items-center z-20">
+                                    <div class="flex flex-col items-center text-[#FC8019]">
+                                        <i class="fas fa-home text-sm"></i>
+                                        <span class="text-[8px] font-bold mt-1 uppercase">Home</span>
+                                    </div>
+                                    <div class="flex flex-col items-center text-slate-400">
+                                        <i class="fas fa-shop text-sm"></i>
+                                        <span class="text-[8px] font-bold mt-1 uppercase">Market</span>
+                                    </div>
+                                    <div
+                                        class="w-10 h-10 md:w-12 md:h-12 bg-[#FC8019] rounded-full flex items-center justify-center text-white -mt-8 md:-mt-10 shadow-lg shadow-orange-300 border-4 border-white flex-shrink-0">
+                                        <i class="fas fa-plus"></i>
+                                    </div>
+                                    <div class="flex flex-col items-center text-slate-400">
+                                        <i class="fas fa-briefcase text-sm"></i>
+                                        <span class="text-[8px] font-bold mt-1 uppercase">Jobs</span>
+                                    </div>
+                                    <div class="flex flex-col items-center text-slate-400">
+                                        <i class="fas fa-user text-sm"></i>
+                                        <span class="text-[8px] font-bold mt-1 uppercase">Profile</span>
+                                    </div>
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="absolute bottom-0 inset-x-0 p-4 md:p-6 bg-gradient-to-t from-white via-white to-transparent">
-                                <div class="bg-[#FC8019] text-white p-3 md:p-4 rounded-xl md:rounded-2xl text-center font-bold text-[10px] md:text-xs uppercase tracking-widest">
-                                    Enter Citizen Hub
-                                </div>
-                            </div>
+                        <div
+                            class="absolute top-6 left-1/2 -translate-x-1/2 w-20 md:w-24 h-5 md:h-6 bg-[#0F1115] rounded-full flex items-center justify-end px-3 z-30">
+                            <div class="w-1.5 h-1.5 bg-blue-900 rounded-full blur-[1px]"></div>
                         </div>
                     </div>
                 </div>
@@ -189,37 +285,61 @@
         </div>
 
         <div class="max-w-7xl mx-auto px-6 py-12 md:py-16 relative z-10">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-24">
-                <div class="flex flex-col items-start group">
-                    <div class="mb-6 flex items-center justify-center w-12 h-12 rounded-full bg-slate-50 border border-slate-100 group-hover:border-[#FC8019]/30 transition-colors duration-500">
-                        <svg class="w-5 h-5 text-[#FC8019]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-                        </svg>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12 lg:gap-24">
+                
+                <div class="flex flex-col items-start group h-full justify-between">
+                    <div>
+                        <div
+                            class="mb-6 flex items-center justify-center w-12 h-12 rounded-full bg-slate-50 border border-slate-100 group-hover:border-[#FC8019]/30 transition-colors duration-500">
+                            <svg class="w-5 h-5 text-[#FC8019]" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h4 class="text-[10px] font-black uppercase tracking-[0.3em] text-[#FC8019] mb-3">Public Access</h4>
+                        <p class="text-xl font-extrabold text-[#282C3F] leading-tight">100% Free. <br><span
+                                class="text-slate-400 font-medium text-sm md:text-base">No Citizen Payments.</span></p>
                     </div>
-                    <h4 class="text-[10px] font-black uppercase tracking-[0.3em] text-[#FC8019] mb-3">Public Access</h4>
-                    <p class="text-xl font-extrabold text-[#282C3F] leading-tight">100% Free. <br><span class="text-slate-400 font-medium text-sm md:text-base">No Citizen Payments.</span></p>
                     <div class="mt-4 h-[1px] w-8 bg-slate-200 group-hover:w-full transition-all duration-700"></div>
                 </div>
 
-                <div class="flex flex-col items-start group">
-                    <div class="mb-6 flex items-center justify-center w-12 h-12 rounded-full bg-slate-50 border border-slate-100 group-hover:border-[#FC8019]/30 transition-colors duration-500">
-                        <svg class="w-5 h-5 text-[#FC8019]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path>
-                        </svg>
+                <div class="flex flex-col items-start group h-full justify-between">
+                    <div>
+                        <div
+                            class="mb-6 flex items-center justify-center w-12 h-12 rounded-full bg-slate-50 border border-slate-100 group-hover:border-[#FC8019]/30 transition-colors duration-500">
+                            <svg class="w-5 h-5 text-[#FC8019]" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129">
+                                </path>
+                            </svg>
+                        </div>
+                        <h4 class="text-[10px] font-black uppercase tracking-[0.3em] text-[#FC8019] mb-3">Hyper-Local</h4>
+                        <p class="text-xl font-extrabold text-[#282C3F] leading-tight">Native Voice. <br><span
+                                class="text-slate-400 font-medium text-sm md:text-base">Marathi & Hindi First.</span></p>
                     </div>
-                    <h4 class="text-[10px] font-black uppercase tracking-[0.3em] text-[#FC8019] mb-3">Hyper-Local</h4>
-                    <p class="text-xl font-extrabold text-[#282C3F] leading-tight">Native Voice. <br><span class="text-slate-400 font-medium text-sm md:text-base">Marathi & Hindi First.</span></p>
                     <div class="mt-4 h-[1px] w-8 bg-slate-200 group-hover:w-full transition-all duration-700"></div>
                 </div>
 
-                <div class="flex flex-col items-start group">
-                    <div class="mb-6 flex items-center justify-center w-12 h-12 rounded-full bg-slate-50 border border-slate-100 group-hover:border-[#FC8019]/30 transition-colors duration-500">
-                        <svg class="w-5 h-5 text-[#FC8019]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"></path>
-                        </svg>
+                <div class="flex flex-col items-start group h-full justify-between">
+                    <div>
+                        <div
+                            class="mb-6 flex items-center justify-center w-12 h-12 rounded-full bg-slate-50 border border-slate-100 group-hover:border-[#FC8019]/30 transition-colors duration-500">
+                            <svg class="w-5 h-5 text-[#FC8019]" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21">
+                                </path>
+                            </svg>
+                        </div>
+                        <h4 class="text-[10px] font-black uppercase tracking-[0.3em] text-[#FC8019] mb-3">Built for Your
+                            City</h4>
+                        <p class="text-xl font-extrabold text-[#282C3F] leading-tight">Get connected <br><span
+                                class="text-slate-400 font-medium text-sm md:text-base">Language, services, and updates that
+                                belong to you.</span></p>
                     </div>
-                    <h4 class="text-[10px] font-black uppercase tracking-[0.3em] text-[#FC8019] mb-3">Privacy First</h4>
-                    <p class="text-xl font-extrabold text-[#282C3F] leading-tight">Zero Ads. <br><span class="text-slate-400 font-medium text-sm md:text-base">No Data Exploitation.</span></p>
                     <div class="mt-4 h-[1px] w-8 bg-slate-200 group-hover:w-full transition-all duration-700"></div>
                 </div>
             </div>
@@ -239,21 +359,25 @@
                 <div class="lg:col-span-3">
                     <div class="lg:sticky lg:top-32 text-center lg:text-left">
                         <div class="flex items-center gap-4 mb-6 justify-center lg:justify-start">
-                            <span class="text-[10px] font-black uppercase tracking-[0.5em] text-[#FC8019]">The Mission</span>
+                            <span class="text-[10px] font-black uppercase tracking-[0.5em] text-[#FC8019]">The
+                                Mission</span>
                             <div class="h-[1px] flex-1 bg-orange-100 hidden lg:block"></div>
                         </div>
                         <p class="text-xs font-bold text-slate-400 uppercase tracking-widest leading-loose">
-                            Refining the <br class="hidden lg:block">Urban Experience <br class="hidden lg:block">Through Data.
+                            Refining the <br class="hidden lg:block">Urban Experience <br
+                                class="hidden lg:block">Through Data.
                         </p>
                     </div>
                 </div>
 
                 <div class="lg:col-span-9 lg:pl-12 text-center lg:text-left">
-                    <h2 class="text-3xl md:text-7xl font-[800] text-[#282C3F] leading-tight md:leading-[1.05] tracking-tight text-balance">
+                    <h2
+                        class="text-3xl md:text-5xl lg:text-7xl font-[800] text-[#282C3F] leading-tight md:leading-[1.05] tracking-tight text-balance">
                         City life should not be fragmented. We define
-                        <span class="relative inline-block">
+                        <span class="relative inline-block whitespace-nowrap">
                             <span class="relative z-10 text-[#FC8019]">Information as Infrastructure</span>
-                            <svg class="absolute -bottom-2 left-0 w-full h-3 text-orange-100 -z-10" viewBox="0 0 100 10" preserveAspectRatio="none">
+                            <svg class="absolute -bottom-2 left-0 w-full h-3 text-orange-100 -z-10" viewBox="0 0 100 10"
+                                preserveAspectRatio="none">
                                 <path d="M0 5 Q 25 0 50 5 T 100 5" fill="none" stroke="currentColor" stroke-width="8" />
                             </svg>
                         </span>
@@ -262,15 +386,19 @@
 
                     <div class="mt-16 grid md:grid-cols-2 gap-12 border-t border-slate-100 pt-16">
                         <div class="space-y-4">
-                            <span class="text-[10px] font-black text-slate-900 uppercase tracking-widest">The Problem</span>
+                            <span class="text-[10px] font-black text-slate-900 uppercase tracking-widest">The
+                                Problem</span>
                             <p class="text-slate-500 leading-relaxed font-medium">
-                                Today, city data is trapped in silos, unofficial groups, and outdated boards. This creates friction, uncertainty, and a lack of civic trust.
+                                Today, city data is trapped in silos, unofficial groups, and outdated boards. This
+                                creates friction, uncertainty, and a lack of civic trust.
                             </p>
                         </div>
                         <div class="space-y-4">
-                            <span class="text-[10px] font-black text-slate-900 uppercase tracking-widest">The Mandate</span>
+                            <span class="text-[10px] font-black text-slate-900 uppercase tracking-widest">The
+                                Mandate</span>
                             <p class="text-slate-500 leading-relaxed font-medium">
-                                Urban Master solves this by providing a unified digital layer that belongs to the city and serves the people directly, without gatekeepers.
+                                Urban Master solves this by providing a unified digital layer that belongs to the city
+                                and serves the people directly, without gatekeepers.
                             </p>
                         </div>
                     </div>
@@ -284,64 +412,96 @@
             <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6 text-center md:text-left">
                 <div class="max-w-xl w-full">
                     <h4 class="text-[10px] font-black uppercase tracking-[0.4em] text-[#FC8019] mb-4">The Framework</h4>
-                    <h2 class="text-3xl md:text-5xl font-[800] text-[#282C3F] tracking-tight">Everything your city needs. <br><span class="text-slate-400">Integrated by design.</span></h2>
+                    <h2 class="text-3xl md:text-5xl font-[800] text-[#282C3F] tracking-tight">Everything your city
+                        needs. <br><span class="text-slate-400">Integrated by design.</span></h2>
                 </div>
                 <div class="hidden lg:block pb-2">
-                    <p class="text-xs font-bold text-slate-400 uppercase tracking-widest border-b border-slate-300 pb-2">Modules 01—08</p>
+                    <p
+                        class="text-xs font-bold text-slate-400 uppercase tracking-widest border-b border-slate-300 pb-2">
+                        Modules 01—08</p>
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-4 md:gap-6">
-                <div class="md:col-span-3 lg:col-span-4 bg-white rounded-[24px] md:rounded-[32px] p-6 md:p-10 border border-white shadow-sm hover:shadow-xl transition-all duration-500 group">
-                    <div class="w-12 h-12 md:w-14 md:h-14 bg-slate-50 rounded-2xl flex items-center justify-center mb-8 md:mb-10 group-hover:scale-110 transition-transform">
-                        <svg class="w-6 h-6 text-[#FC8019]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
-                        </svg>
-                    </div>
-                    <div class="flex flex-col h-full">
-                        <h3 class="text-xl md:text-2xl font-black text-[#282C3F] mb-4">City Info Hub</h3>
-                        <p class="text-sm md:text-base text-slate-500 font-medium">Verified ward-level notices, municipal alerts, and city-wide announcements delivered via official channels.</p>
-                        <div class="mt-8 pt-8 border-t border-slate-50 flex items-center gap-2">
-                            <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-                            <span class="text-[10px] font-black tracking-widest text-slate-400 uppercase">Live Updates</span>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6">
+                <div
+                    class="lg:col-span-4 bg-white rounded-[24px] md:rounded-[32px] p-8 border border-white shadow-sm hover:shadow-xl transition-all duration-500 group flex flex-col justify-between h-full">
+                    <div>
+                        <div
+                            class="w-12 h-12 md:w-14 md:h-14 bg-slate-50 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                            <svg class="w-6 h-6 text-[#FC8019]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9">
+                                </path>
+                            </svg>
                         </div>
+                        <h3 class="text-xl md:text-2xl font-black text-[#282C3F] mb-4">City Info Hub</h3>
+                        <p class="text-sm md:text-base text-slate-500 font-medium">Verified ward-level notices,
+                            municipal alerts, and city-wide announcements delivered via official channels.</p>
+                    </div>
+                    <div class="mt-8 pt-8 border-t border-slate-50 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                        <span class="text-[10px] font-black tracking-widest text-slate-400 uppercase">Live
+                            Updates</span>
                     </div>
                 </div>
 
-                <div class="md:col-span-3 lg:col-span-4 bg-white rounded-[24px] md:rounded-[32px] p-6 md:p-10 border border-white shadow-sm hover:shadow-xl transition-all duration-500 group">
-                    <div class="w-12 h-12 md:w-14 md:h-14 bg-slate-50 rounded-2xl flex items-center justify-center mb-8 md:mb-10 group-hover:scale-110 transition-transform">
-                        <svg class="w-6 h-6 text-[#FC8019]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-                        </svg>
+                <div
+                    class="lg:col-span-4 bg-white rounded-[24px] md:rounded-[32px] p-8 border border-white shadow-sm hover:shadow-xl transition-all duration-500 group flex flex-col justify-between h-full">
+                    <div>
+                        <div
+                            class="w-12 h-12 md:w-14 md:h-14 bg-slate-50 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                            <svg class="w-6 h-6 text-[#FC8019]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-black text-[#282C3F] mb-4">Market Rates</h3>
+                        <p class="text-sm md:text-base text-slate-500 font-medium">Transparent daily pricing for essentials
+                            across all local mandis. Direct data, zero speculation.</p>
                     </div>
-                    <h3 class="text-xl md:text-2xl font-black text-[#282C3F] mb-4">Market Rates</h3>
-                    <p class="text-sm md:text-base text-slate-500 font-medium">Transparent daily pricing for essentials across all local mandis. Direct data, zero speculation.</p>
-                    <div class="mt-8 pt-8 border-t border-slate-50 text-[10px] font-black text-slate-400 uppercase italic">Updated 06:00 AM Daily</div>
+                    <div
+                        class="mt-8 pt-8 border-t border-slate-50 text-[10px] font-black text-slate-400 uppercase italic">
+                        Updated 06:00 AM Daily</div>
                 </div>
 
-                <div class="md:col-span-3 lg:col-span-4 bg-white rounded-[24px] md:rounded-[32px] p-6 md:p-10 border border-white shadow-sm hover:shadow-xl transition-all duration-500 group">
-                    <div class="w-12 h-12 md:w-14 md:h-14 bg-slate-50 rounded-2xl flex items-center justify-center mb-8 md:mb-10 group-hover:scale-110 transition-transform">
-                        <svg class="w-6 h-6 text-[#FC8019]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                        </svg>
+                <div
+                    class="lg:col-span-4 bg-white rounded-[24px] md:rounded-[32px] p-8 border border-white shadow-sm hover:shadow-xl transition-all duration-500 group flex flex-col justify-between h-full">
+                    <div>
+                        <div
+                            class="w-12 h-12 md:w-14 md:h-14 bg-slate-50 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                            <svg class="w-6 h-6 text-[#FC8019]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-black text-[#282C3F] mb-4">Jobs & Skills</h3>
+                        <p class="text-sm md:text-base text-slate-500 font-medium">Connecting city talent with hyperlocal
+                            needs. A sovereign employment board for every citizen.</p>
                     </div>
-                    <h3 class="text-xl md:text-2xl font-black text-[#282C3F] mb-4">Jobs & Skills</h3>
-                    <p class="text-sm md:text-base text-slate-500 font-medium">Connecting city talent with hyperlocal needs. A sovereign employment board for every citizen.</p>
-                    <div class="mt-8 pt-8 border-t border-slate-50 text-[10px] font-black text-[#FC8019] uppercase">Verified Opportunities</div>
+                    <div class="mt-8 pt-8 border-t border-slate-50 text-[10px] font-black text-[#FC8019] uppercase">
+                        Verified Opportunities</div>
                 </div>
 
-                <div class="md:col-span-6 lg:col-span-12 bg-[#282C3F] rounded-[32px] md:rounded-[40px] p-8 md:p-12 text-white relative overflow-hidden group">
-                    <div class="absolute -right-20 -top-20 w-64 md:w-96 h-64 md:h-96 bg-red-500/10 rounded-full blur-[60px] md:blur-[100px] group-hover:bg-red-500/20 transition-all"></div>
+                <div
+                    class="md:col-span-2 lg:col-span-12 bg-[#282C3F] rounded-[32px] md:rounded-[40px] p-8 md:p-12 text-white relative overflow-hidden group">
+                    <div
+                        class="absolute -right-20 -top-20 w-64 md:w-96 h-64 md:h-96 bg-red-500/10 rounded-full blur-[60px] md:blur-[100px] group-hover:bg-red-500/20 transition-all">
+                    </div>
 
-                    <div class="grid lg:grid-cols-2 items-center gap-12 relative z-10 text-center lg:text-left">
+                    <div class="grid lg:grid-cols-2 items-center gap-10 md:gap-12 relative z-10 text-center lg:text-left">
                         <div class="flex flex-col items-center lg:items-start">
-                            <div class="w-16 h-16 bg-red-500 rounded-2xl md:rounded-3xl flex items-center justify-center text-3xl mb-8 shadow-xl shadow-red-500/20">🆘</div>
+                            <div
+                                class="w-16 h-16 bg-red-500 rounded-2xl md:rounded-3xl flex items-center justify-center text-3xl mb-8 shadow-xl shadow-red-500/20">
+                                🆘</div>
                             <h3 class="text-3xl md:text-4xl font-black mb-6 tracking-tight">Emergency Coordination</h3>
                             <p class="text-slate-400 text-base md:text-lg leading-relaxed font-medium max-w-md italic">
-                                A high-priority module for blood banks, ambulance tracking, and police coordination. Critical infrastructure that saves lives.
+                                A high-priority module for blood banks, ambulance tracking, and police coordination.
+                                Critical infrastructure that saves lives.
                             </p>
                         </div>
-                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 w-full">
                             <div class="bg-white/5 border border-white/10 p-4 md:p-6 rounded-2xl text-center">
                                 <p class="text-[10px] font-black uppercase opacity-50 mb-2 tracking-widest">Blood</p>
                                 <p class="text-lg md:text-xl font-bold italic uppercase">Active</p>
@@ -350,7 +510,8 @@
                                 <p class="text-[10px] font-black uppercase opacity-50 mb-2 tracking-widest">Medical</p>
                                 <p class="text-lg md:text-xl font-bold italic uppercase">24/7</p>
                             </div>
-                            <div class="bg-white/5 border border-white/10 p-4 md:p-6 rounded-2xl text-center col-span-2 sm:col-span-1">
+                            <div
+                                class="bg-white/5 border border-white/10 p-4 md:p-6 rounded-2xl text-center col-span-2 sm:col-span-1">
                                 <p class="text-[10px] font-black uppercase opacity-50 mb-2 tracking-widest">Transit</p>
                                 <p class="text-lg md:text-xl font-bold italic uppercase">Direct</p>
                             </div>
@@ -361,40 +522,51 @@
         </div>
     </section>
 
-    <section class="relative py-32 md:py-60 overflow-hidden bg-[#FDFDFB]">
+    <section class="relative py-24 md:py-60 overflow-hidden bg-[#FDFDFB]">
         <div class="absolute inset-0 flex items-center justify-center pointer-events-none select-none opacity-[0.02]">
-            <span class="text-[40vw] lg:text-[30vw] font-black leading-none uppercase tracking-tighter text-[#282C3F]">URBAN</span>
+            <span
+                class="text-[25vw] lg:text-[20vw] font-black leading-none uppercase tracking-tighter text-[#282C3F] whitespace-nowrap">URBAN</span>
         </div>
 
         <div class="max-w-7xl mx-auto px-6 relative z-10">
-            <div class="flex flex-col items-center">
+            <div class="flex flex-col items-center w-full">
                 <div class="mb-12 md:mb-16 flex flex-col items-center gap-4">
                     <div class="w-[1px] h-16 md:h-20 bg-gradient-to-b from-transparent to-[#FC8019]"></div>
-                    <span class="text-[10px] font-black uppercase tracking-[0.6em] text-[#FC8019] text-center ml-2">Civic Ownership</span>
+                    <span
+                        class="text-[10px] font-black uppercase tracking-[0.6em] text-[#FC8019] text-center ml-2">Civic
+                        Ownership</span>
                 </div>
 
-                <div class="relative mb-12 md:mb-16 text-center">
-                    <span class="absolute -top-12 -left-4 md:-left-8 text-6xl md:text-8xl text-orange-100 font-serif opacity-50">“</span>
-                    <h2 class="text-5xl sm:text-7xl md:text-[11rem] font-[900] text-[#282C3F] leading-[1.1] md:leading-[0.85] tracking-[-0.05em] text-balance">
-                        हे आपल्या <span class="text-[#FC8019] relative inline-block">शहरासाठी<span class="absolute -bottom-2 md:-bottom-4 left-0 w-full h-[3px] md:h-[6px] bg-[#FC8019]/10 rounded-full"></span></span> आहे.
+                <div class="relative mb-12 md:mb-16 text-center w-full">
+                    <span
+                        class="absolute -top-6 sm:-top-12 -left-2 sm:-left-8 text-6xl md:text-8xl text-orange-100 font-serif opacity-50">“</span>
+                    <h2
+                        class="text-4xl sm:text-6xl md:text-8xl lg:text-[10rem] font-[900] text-[#282C3F] leading-[1.2] md:leading-[1] tracking-[-0.05em] text-balance break-words">
+                        हे आपल्या <span class="text-[#FC8019] relative inline-block whitespace-nowrap">शहरासाठी<span
+                                class="absolute -bottom-2 md:-bottom-4 left-0 w-full h-[3px] md:h-[6px] bg-[#FC8019]/10 rounded-full"></span></span>
+                        आहे.
                     </h2>
-                    <span class="absolute -bottom-12 -right-4 md:-right-8 text-6xl md:text-8xl text-orange-100 font-serif opacity-50 rotate-180">“</span>
+                    <span
+                        class="absolute -bottom-6 sm:-bottom-12 -right-2 sm:-right-8 text-6xl md:text-8xl text-orange-100 font-serif opacity-50 rotate-180">“</span>
                 </div>
 
-                <div class="max-w-2xl text-center">
+                <div class="max-w-2xl text-center px-4">
                     <div class="flex items-center justify-center gap-4 md:gap-6 mb-8">
                         <div class="h-[1px] w-8 md:w-12 bg-slate-200"></div>
-                        <p class="text-[10px] md:text-sm font-black text-[#282C3F] uppercase tracking-[0.3em]">Built for People. Owned by Cities.</p>
+                        <p class="text-[10px] md:text-sm font-black text-[#282C3F] uppercase tracking-[0.3em] whitespace-nowrap">Built for
+                            People.</p>
                         <div class="h-[1px] w-8 md:w-12 bg-slate-200"></div>
                     </div>
                     <p class="text-lg md:text-xl text-slate-500 font-medium leading-relaxed italic">
-                        Urban Master is not a company. It is a commitment to the digital sovereignty of every resident. This platform belongs to the soil it serves.
+                        Urban Master is not a company. It is a commitment to the digital sovereignty of every resident.
+                        This platform belongs to the soil it serves.
                     </p>
                 </div>
             </div>
         </div>
 
-        <div class="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-wrap justify-center items-center gap-4 md:gap-8 opacity-40 grayscale px-6 w-full text-center">
+        <div
+            class="absolute bottom-8 md:bottom-12 left-1/2 -translate-x-1/2 flex flex-wrap justify-center items-center gap-4 md:gap-8 opacity-40 grayscale px-6 w-full text-center">
             <span class="text-[9px] font-bold uppercase tracking-widest whitespace-nowrap">Hinganghat</span>
             <span class="text-[9px] font-bold uppercase tracking-widest whitespace-nowrap">Wardha</span>
             <span class="text-[9px] font-bold uppercase tracking-widest whitespace-nowrap">Nagpur</span>
@@ -404,92 +576,71 @@
 
     <section id="download" class="relative py-24 md:py-40 bg-[#1A1D29] overflow-hidden">
         <div class="absolute inset-0 opacity-[0.05] pointer-events-none">
-            <svg width="100%" height="100%"><pattern id="grid-dark" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M 60 0 L 0 0 0 60" fill="none" stroke="white" stroke-width="0.5"/></pattern><rect width="100%" height="100%" fill="url(#grid-dark)" /></svg>
+            <svg width="100%" height="100%">
+                <pattern id="grid-dark" width="60" height="60" patternUnits="userSpaceOnUse">
+                    <path d="M 60 0 L 0 0 0 60" fill="none" stroke="white" stroke-width="0.5" />
+                </pattern>
+                <rect width="100%" height="100%" fill="url(#grid-dark)" />
+            </svg>
         </div>
 
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full md:w-[800px] h-full md:h-[800px] bg-[#FC8019]/10 blur-[80px] md:blur-[160px] rounded-full pointer-events-none"></div>
+        <div
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full md:w-[800px] h-full md:h-[800px] bg-[#FC8019]/10 blur-[80px] md:blur-[160px] rounded-full pointer-events-none">
+        </div>
 
         <div class="max-w-7xl mx-auto px-6 relative z-10">
             <div class="text-center mb-16 md:mb-24">
                 <h4 class="text-[10px] font-black uppercase tracking-[0.5em] text-[#FC8019] mb-6">Final Step</h4>
-                <h2 class="text-4xl md:text-7xl font-[800] text-white tracking-tight mb-8">Ready to Digitalize <br><span class="text-slate-500">Your Urban Life.</span></h2>
+                <h2 class="text-4xl md:text-7xl font-[800] text-white tracking-tight mb-8 leading-tight">Ready to Digitalize <br><span
+                        class="text-slate-500">Your Urban Life.</span></h2>
                 <div class="h-1 w-24 bg-[#FC8019] mx-auto rounded-full"></div>
             </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 max-w-5xl mx-auto">
-                <div class="group relative bg-[#282C3F] border border-white/5 rounded-[32px] md:rounded-[40px] p-8 md:p-12 transition-all duration-500 hover:border-[#FC8019]/40 hover:-translate-y-2 overflow-hidden shadow-2xl text-center">
-                    <div class="absolute inset-0 bg-gradient-to-br from-[#FC8019]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                    <div class="relative z-10 flex flex-col items-center">
-                        <div class="w-14 h-14 md:w-16 md:h-16 bg-white/5 rounded-2xl flex items-center justify-center text-2xl mb-6 md:mb-8 group-hover:scale-110 transition-transform">🤖</div>
-                        <h3 class="text-xl md:text-2xl font-black text-white mb-2 tracking-tight uppercase">Android Market</h3>
-                        <p class="text-slate-400 text-[10px] md:text-sm font-medium mb-8 md:mb-10 tracking-widest uppercase">Official Google Play Store</p>
-                        
-                        <div class="relative p-6 bg-white rounded-[24px] md:rounded-[32px] shadow-[0_20px_40px_rgba(0,0,0,0.4)] transition-all group-hover:shadow-[0_20px_50px_rgba(252,128,25,0.2)]">
-                            <div class="w-24 h-24 md:w-32 md:h-32 bg-slate-50 flex items-center justify-center rounded-xl overflow-hidden border-4 border-slate-50">
-                                <div class="text-[8px] font-black text-slate-300 uppercase tracking-tighter text-center leading-none">Scanning <br> Optimized <br> Link</div>
-                            </div>
-                        </div>
-                        
-                        <div class="mt-10 flex flex-col items-center gap-2">
-                            <span class="text-[10px] font-black text-white/40 uppercase tracking-[0.3em]">Version 2.4.0</span>
-                            <div class="h-1 w-8 bg-white/10 rounded-full"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="group relative bg-[#282C3F] border border-white/5 rounded-[32px] md:rounded-[40px] p-8 md:p-12 transition-all duration-500 hover:border-[#FC8019]/40 hover:-translate-y-2 overflow-hidden shadow-2xl text-center">
-                    <div class="absolute inset-0 bg-gradient-to-br from-[#FC8019]/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                    <div class="relative z-10 flex flex-col items-center">
-                        <div class="w-14 h-14 md:w-16 md:h-16 bg-white/5 rounded-2xl flex items-center justify-center text-2xl mb-6 md:mb-8 group-hover:scale-110 transition-transform">🍎</div>
-                        <h3 class="text-xl md:text-2xl font-black text-white mb-2 tracking-tight uppercase">Apple App Store</h3>
-                        <p class="text-slate-400 text-[10px] md:text-sm font-medium mb-8 md:mb-10 tracking-widest uppercase">Verified iOS Gateway</p>
-                        
-                        <div class="relative p-6 bg-white rounded-[24px] md:rounded-[32px] shadow-[0_20px_40px_rgba(0,0,0,0.4)] transition-all group-hover:shadow-[0_20px_50px_rgba(252,128,25,0.2)]">
-                            <div class="w-24 h-24 md:w-32 md:h-32 bg-slate-50 flex items-center justify-center rounded-xl overflow-hidden border-4 border-slate-50">
-                                <div class="text-[8px] font-black text-slate-300 uppercase tracking-tighter text-center leading-none">Scanning <br> Optimized <br> Link</div>
-                            </div>
-                        </div>
-                        
-                        <div class="mt-10 flex flex-col items-center gap-2">
-                            <span class="text-[10px] font-black text-white/40 uppercase tracking-[0.3em]">Build 2026.01</span>
-                            <div class="h-1 w-8 bg-white/10 rounded-full"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+ 
 
             <div class="mt-16 md:mt-24 text-center">
-                <p class="text-slate-500 font-bold uppercase tracking-[0.4em] text-[10px] md:text-xs px-4">Access Granted to Local Residents Only.</p>
+                <p class="text-slate-500 font-bold uppercase tracking-[0.4em] text-[10px] md:text-xs px-4">Access
+                    Granted to Local Residents Only.</p>
             </div>
         </div>
     </section>
 
     <footer class="bg-white pt-20 md:pt-32 pb-12 md:pb-16 border-t border-slate-100 relative">
-        <div class="absolute top-0 inset-x-0 h-24 bg-gradient-to-b from-slate-50/50 to-transparent pointer-events-none"></div>
+        <div class="absolute top-0 inset-x-0 h-24 bg-gradient-to-b from-slate-50/50 to-transparent pointer-events-none">
+        </div>
 
         <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-20 md:mb-24">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 mb-20 md:mb-24">
                 <div class="lg:col-span-5 text-center lg:text-left">
                     <div class="flex items-center gap-4 mb-10 justify-center lg:justify-start">
-                        <div class="w-10 h-10 swiggy-gradient rounded-[12px] flex items-center justify-center text-white font-black italic shadow-lg shadow-orange-200/50">U</div>
+                        <div
+                            class="w-10 h-10 swiggy-gradient rounded-[12px] flex items-center justify-center text-white font-black italic shadow-lg shadow-orange-200/50 flex-shrink-0">
+                            U</div>
                         <div class="flex flex-col text-left">
-                            <span class="text-xl font-[900] tracking-[-0.03em] text-[#282C3F] leading-none uppercase">URBAN MASTER</span>
-                            <span class="text-[9px] font-black uppercase tracking-[0.3em] text-[#FC8019] mt-1 opacity-80 italic">Civic Infrastructure</span>
+                            <span
+                                class="text-xl font-[900] tracking-[-0.03em] text-[#282C3F] leading-none uppercase">URBAN
+                                MASTER</span>
+                            <span
+                                class="text-[9px] font-black uppercase tracking-[0.3em] text-[#FC8019] mt-1 opacity-80 italic">Civic
+                                Infrastructure</span>
                         </div>
                     </div>
-                    <p class="text-base md:text-lg font-medium text-[#282C3F] leading-relaxed max-w-sm mb-8 italic mx-auto lg:mx-0">
-                        Defining the sovereign digital layer for every city. Built for accessibility, transparency, and public growth.
+                    <p
+                        class="text-base md:text-lg font-medium text-[#282C3F] leading-relaxed max-w-sm mb-8 italic mx-auto lg:mx-0">
+                        Defining the sovereign digital layer for every city. Built for accessibility, transparency, and
+                        public growth.
                     </p>
-                    <div class="flex gap-4 justify-center lg:justify-start">
+                    <div class="flex gap-4 justify-center lg:justify-start items-center">
                         <span class="w-2 h-2 rounded-full bg-green-500"></span>
-                        <span class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">System Operational • 2026</span>
+                        <span class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">System
+                            Operational • 2026</span>
                     </div>
                 </div>
 
                 <div class="lg:col-span-7">
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-y-12 gap-x-8 text-center sm:text-left">
                         <div>
-                            <h5 class="text-[10px] font-black text-slate-300 uppercase tracking-[0.4em] mb-6">Active Deployments</h5>
+                            <h5 class="text-[10px] font-black text-slate-300 uppercase tracking-[0.4em] mb-6">Active
+                                Deployments</h5>
                             <ul class="text-sm font-bold text-[#282C3F] space-y-3">
                                 <li>Hinganghat</li>
                                 <li>Wardha</li>
@@ -498,7 +649,8 @@
                             </ul>
                         </div>
                         <div>
-                            <h5 class="text-[10px] font-black text-slate-300 uppercase tracking-[0.4em] mb-6">Governance</h5>
+                            <h5 class="text-[10px] font-black text-slate-300 uppercase tracking-[0.4em] mb-6">Governance
+                            </h5>
                             <ul class="text-sm font-bold text-[#282C3F] space-y-3">
                                 <li class="hover:text-[#FC8019] cursor-pointer transition-colors">Public Manifesto</li>
                                 <li class="hover:text-[#FC8019] cursor-pointer transition-colors">Citizen Rights</li>
@@ -507,30 +659,12 @@
                             </ul>
                         </div>
                         <div>
-                            <h5 class="text-[10px] font-black text-slate-300 uppercase tracking-[0.4em] mb-6">Contact</h5>
+                            <h5 class="text-[10px] font-black text-slate-300 uppercase tracking-[0.4em] mb-6">Contact
+                            </h5>
                             <div class="flex flex-col gap-2">
-                                <p class="text-sm font-black text-[#FC8019] break-all">contact@urbanmaster.org</p>
-                                <span class="text-[10px] font-bold text-slate-400">Response time: &lt; 24h</span>
+                                <p class="text-sm font-black text-[#FC8019] break-all">admin@urbanmaster.in</p>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pt-12 border-t border-slate-100 flex flex-col lg:flex-row justify-between items-center gap-8 text-center">
-                <div class="flex flex-col sm:flex-row items-center gap-4 md:gap-8">
-                    <p class="text-[9px] md:text-[10px] font-black uppercase tracking-[0.3em] text-slate-400">© 2026 Urban Master Foundation</p>
-                    <div class="hidden sm:block w-1 h-1 bg-slate-200 rounded-full"></div>
-                    <div class="flex items-center gap-6">
-                        <span class="text-[9px] md:text-[10px] font-black uppercase tracking-[0.3em] text-slate-300">No Trackers</span>
-                        <span class="text-[9px] md:text-[10px] font-black uppercase tracking-[0.3em] text-slate-300">No Ads</span>
-                    </div>
-                </div>
-                
-                <div class="flex items-center gap-4 px-6 py-3 bg-slate-50 rounded-full border border-slate-100">
-                    <span class="text-[9px] md:text-[10px] font-black uppercase tracking-[0.3em] text-slate-900 whitespace-nowrap">Digital Sovereignty</span>
-                    <div class="w-4 h-4 text-[#FC8019]">
-                        <svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
                     </div>
                 </div>
             </div>
