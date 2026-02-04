@@ -21,7 +21,8 @@
             background-color: var(--off-white);
             color: var(--carbon-ink);
             padding-top: 0;
-            overflow-x: hidden; /* Prevents horizontal scroll from decorative elements */
+            overflow-x: hidden;
+            /* Prevents horizontal scroll from decorative elements */
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
@@ -51,7 +52,8 @@
         }
 
         .glass {
-            background: rgba(255, 255, 255, 0.85); /* Slightly increased opacity for legibility */
+            background: rgba(255, 255, 255, 0.85);
+            /* Slightly increased opacity for legibility */
             backdrop-filter: blur(20px) saturate(180%);
             -webkit-backdrop-filter: blur(20px) saturate(180%);
         }
@@ -71,7 +73,7 @@
         .animate-bounce-slow {
             animation: bounce-slow 5s ease-in-out infinite;
         }
-        
+
         /* Utility for text balance */
         .text-balance {
             text-wrap: balance;
@@ -80,7 +82,7 @@
 </head>
 
 <body class="antialiased selection:bg-orange-100 selection:text-orange-900">
-    
+
     <nav class="fixed top-0 inset-x-0 z-[100] px-4 md:px-6 py-4 w-full">
         <div class="max-w-7xl mx-auto w-full">
             <div
@@ -123,32 +125,37 @@
             </div>
         </div>
     </nav>
-    
+
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-    <section class="relative min-h-[90vh] md:min-h-screen flex items-center pt-32 pb-16 md:pb-24 overflow-hidden bg-white">
+    <section
+        class="relative min-h-[90vh] md:min-h-screen flex items-center pt-32 pb-16 md:pb-24 overflow-hidden bg-white">
         <div
             class="absolute top-0 right-0 w-full md:w-1/2 h-full bg-[#F8F9FC] z-0 hidden lg:block skew-x-[-12deg] origin-top translate-x-20">
         </div>
-        <div class="absolute top-[-10%] right-[-10%] md:right-[-5%] w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-orange-500/5 blur-[80px] md:blur-[120px] rounded-full pointer-events-none">
+        <div
+            class="absolute top-[-10%] right-[-10%] md:right-[-5%] w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-orange-500/5 blur-[80px] md:blur-[120px] rounded-full pointer-events-none">
         </div>
 
         <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center relative z-10 w-full">
             <div class="max-w-xl mx-auto lg:mx-0 text-center lg:text-left order-2 lg:order-1">
                 <div class="inline-flex items-center gap-3 mb-6 md:mb-8 justify-center lg:justify-start">
                     <span class="w-8 md:w-12 h-[2px] bg-[#FC8019]"></span>
-                    <span class="text-[10px] md:text-xs font-black uppercase tracking-[0.3em] text-[#FC8019]">Digital Sovereignty
+                    <span class="text-[10px] md:text-xs font-black uppercase tracking-[0.3em] text-[#FC8019]">Digital
+                        Sovereignty
                         2026</span>
                 </div>
 
-                <h1 class="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-[800] leading-[1.1] md:leading-[1] text-[#282C3F] tracking-tighter mb-6 md:mb-10 text-balance">
+                <h1
+                    class="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-[800] leading-[1.1] md:leading-[1] text-[#282C3F] tracking-tighter mb-6 md:mb-10 text-balance">
                     The City <br class="hidden sm:block">
                     <span class="text-[#FC8019]">Operating</span> <br class="hidden sm:block">
                     System.
                 </h1>
 
-                <p class="text-base sm:text-lg md:text-2xl text-slate-500 font-medium leading-relaxed mb-8 md:mb-12 max-w-lg mx-auto lg:mx-0">
+                <p
+                    class="text-base sm:text-lg md:text-2xl text-slate-500 font-medium leading-relaxed mb-8 md:mb-12 max-w-lg mx-auto lg:mx-0">
                     Urban Master is a flagship digital public utility. We consolidate verified governance, localized
                     markets, and emergency response into one photorealistic, sovereign interface.
                 </p>
@@ -161,8 +168,10 @@
                 </div>
             </div>
 
-            <div class="relative flex justify-center lg:justify-end order-1 lg:order-2 mb-8 lg:mb-0" x-data="{ activeTab: 1 }">
-                <div class="absolute bottom-[-30px] md:bottom-[-50px] w-[60%] md:w-[80%] h-[40px] bg-black/10 blur-3xl rounded-full scale-x-110">
+            <div class="relative flex justify-center lg:justify-end order-1 lg:order-2 mb-8 lg:mb-0"
+                x-data="{ activeTab: 1 }">
+                <div
+                    class="absolute bottom-[-30px] md:bottom-[-50px] w-[60%] md:w-[80%] h-[40px] bg-black/10 blur-3xl rounded-full scale-x-110">
                 </div>
 
                 <div class="relative z-10 w-full max-w-[320px] md:max-w-[420px] lg:mr-10">
@@ -173,13 +182,17 @@
                             class="bg-white rounded-[2.5rem] md:rounded-[2.8rem] overflow-hidden aspect-[9/19] relative border-[4px] border-[#1A1D29]">
 
                             <div class="h-full flex flex-col bg-[#FDFDFD]">
-                                <div class="bg-[#FC8019] p-5 md:p-6 pt-8 md:pt-10 text-white rounded-b-[2.5rem] shadow-lg">
+                                <div
+                                    class="bg-[#FC8019] p-5 md:p-6 pt-8 md:pt-10 text-white rounded-b-[2.5rem] shadow-lg">
                                     <div class="flex justify-between items-start mb-4">
-                                        <div class="bg-white/20 px-3 py-1 rounded-full text-[10px] font-bold backdrop-blur-sm">
+                                        <div
+                                            class="bg-white/20 px-3 py-1 rounded-full text-[10px] font-bold backdrop-blur-sm">
                                             <i class="fas fa-location-dot mr-1"></i> Hinganghat, MH
                                         </div>
-                                        <div class="w-8 h-8 md:w-10 md:h-10 rounded-full border-2 border-white/30 overflow-hidden flex-shrink-0">
-                                            <img src="https://i.pravatar.cc/100?u=himanshu" alt="Profile" class="w-full h-full object-cover">
+                                        <div
+                                            class="w-8 h-8 md:w-10 md:h-10 rounded-full border-2 border-white/30 overflow-hidden flex-shrink-0">
+                                            <img src="https://i.pravatar.cc/100?u=himanshu" alt="Profile"
+                                                class="w-full h-full object-cover">
                                         </div>
                                     </div>
                                     <h3 class="text-xl md:text-2xl font-black">Hello, John 👋</h3>
@@ -193,7 +206,8 @@
                                             <span
                                                 class="text-[10px] font-bold text-orange-600 uppercase tracking-widest">Featured
                                                 Service</span>
-                                            <h4 class="font-black text-[#282C3F] mt-1 text-sm md:text-base">Trusted Local Services</h4>
+                                            <h4 class="font-black text-[#282C3F] mt-1 text-sm md:text-base">Trusted
+                                                Local Services</h4>
                                             <div class="flex gap-2 mt-3">
                                                 <div
                                                     class="bg-white p-2 rounded-xl shadow-sm text-[10px] md:text-xs text-center flex-1">
@@ -215,7 +229,8 @@
                                         <div class="flex justify-between items-center">
                                             <h5 class="font-bold text-sm text-slate-800 tracking-tight">Active Listings
                                             </h5>
-                                            <span class="text-[10px] text-orange-500 font-bold uppercase cursor-pointer">View
+                                            <span
+                                                class="text-[10px] text-orange-500 font-bold uppercase cursor-pointer">View
                                                 All</span>
                                         </div>
                                         <div
@@ -225,7 +240,8 @@
                                                 <i class="fas fa-tractor text-slate-400"></i>
                                             </div>
                                             <div class="flex-1 min-w-0">
-                                                <p class="text-xs font-black text-slate-800 truncate">Cotton Agro Farm...</p>
+                                                <p class="text-xs font-black text-slate-800 truncate">Cotton Agro
+                                                    Farm...</p>
                                                 <div class="flex items-center gap-2 mt-1">
                                                     <span
                                                         class="bg-green-100 text-green-700 text-[8px] px-1.5 py-0.5 rounded font-bold">5.0
@@ -286,7 +302,7 @@
 
         <div class="max-w-7xl mx-auto px-6 py-12 md:py-16 relative z-10">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12 lg:gap-24">
-                
+
                 <div class="flex flex-col items-start group h-full justify-between">
                     <div>
                         <div
@@ -298,7 +314,8 @@
                                 </path>
                             </svg>
                         </div>
-                        <h4 class="text-[10px] font-black uppercase tracking-[0.3em] text-[#FC8019] mb-3">Public Access</h4>
+                        <h4 class="text-[10px] font-black uppercase tracking-[0.3em] text-[#FC8019] mb-3">Public Access
+                        </h4>
                         <p class="text-xl font-extrabold text-[#282C3F] leading-tight">100% Free. <br><span
                                 class="text-slate-400 font-medium text-sm md:text-base">No Citizen Payments.</span></p>
                     </div>
@@ -316,9 +333,11 @@
                                 </path>
                             </svg>
                         </div>
-                        <h4 class="text-[10px] font-black uppercase tracking-[0.3em] text-[#FC8019] mb-3">Hyper-Local</h4>
+                        <h4 class="text-[10px] font-black uppercase tracking-[0.3em] text-[#FC8019] mb-3">Hyper-Local
+                        </h4>
                         <p class="text-xl font-extrabold text-[#282C3F] leading-tight">Native Voice. <br><span
-                                class="text-slate-400 font-medium text-sm md:text-base">Marathi & Hindi First.</span></p>
+                                class="text-slate-400 font-medium text-sm md:text-base">Marathi & Hindi First.</span>
+                        </p>
                     </div>
                     <div class="mt-4 h-[1px] w-8 bg-slate-200 group-hover:w-full transition-all duration-700"></div>
                 </div>
@@ -337,7 +356,8 @@
                         <h4 class="text-[10px] font-black uppercase tracking-[0.3em] text-[#FC8019] mb-3">Built for Your
                             City</h4>
                         <p class="text-xl font-extrabold text-[#282C3F] leading-tight">Get connected <br><span
-                                class="text-slate-400 font-medium text-sm md:text-base">Language, services, and updates that
+                                class="text-slate-400 font-medium text-sm md:text-base">Language, services, and updates
+                                that
                                 belong to you.</span></p>
                     </div>
                     <div class="mt-4 h-[1px] w-8 bg-slate-200 group-hover:w-full transition-all duration-700"></div>
@@ -457,7 +477,8 @@
                             </svg>
                         </div>
                         <h3 class="text-xl md:text-2xl font-black text-[#282C3F] mb-4">Market Rates</h3>
-                        <p class="text-sm md:text-base text-slate-500 font-medium">Transparent daily pricing for essentials
+                        <p class="text-sm md:text-base text-slate-500 font-medium">Transparent daily pricing for
+                            essentials
                             across all local mandis. Direct data, zero speculation.</p>
                     </div>
                     <div
@@ -477,7 +498,8 @@
                             </svg>
                         </div>
                         <h3 class="text-xl md:text-2xl font-black text-[#282C3F] mb-4">Jobs & Skills</h3>
-                        <p class="text-sm md:text-base text-slate-500 font-medium">Connecting city talent with hyperlocal
+                        <p class="text-sm md:text-base text-slate-500 font-medium">Connecting city talent with
+                            hyperlocal
                             needs. A sovereign employment board for every citizen.</p>
                     </div>
                     <div class="mt-8 pt-8 border-t border-slate-50 text-[10px] font-black text-[#FC8019] uppercase">
@@ -490,7 +512,8 @@
                         class="absolute -right-20 -top-20 w-64 md:w-96 h-64 md:h-96 bg-red-500/10 rounded-full blur-[60px] md:blur-[100px] group-hover:bg-red-500/20 transition-all">
                     </div>
 
-                    <div class="grid lg:grid-cols-2 items-center gap-10 md:gap-12 relative z-10 text-center lg:text-left">
+                    <div
+                        class="grid lg:grid-cols-2 items-center gap-10 md:gap-12 relative z-10 text-center lg:text-left">
                         <div class="flex flex-col items-center lg:items-start">
                             <div
                                 class="w-16 h-16 bg-red-500 rounded-2xl md:rounded-3xl flex items-center justify-center text-3xl mb-8 shadow-xl shadow-red-500/20">
@@ -553,7 +576,9 @@
                 <div class="max-w-2xl text-center px-4">
                     <div class="flex items-center justify-center gap-4 md:gap-6 mb-8">
                         <div class="h-[1px] w-8 md:w-12 bg-slate-200"></div>
-                        <p class="text-[10px] md:text-sm font-black text-[#282C3F] uppercase tracking-[0.3em] whitespace-nowrap">Built for
+                        <p
+                            class="text-[10px] md:text-sm font-black text-[#282C3F] uppercase tracking-[0.3em] whitespace-nowrap">
+                            Built for
                             People.</p>
                         <div class="h-[1px] w-8 md:w-12 bg-slate-200"></div>
                     </div>
@@ -591,11 +616,11 @@
         <div class="max-w-7xl mx-auto px-6 relative z-10">
             <div class="text-center mb-16 md:mb-24">
                 <h4 class="text-[10px] font-black uppercase tracking-[0.5em] text-[#FC8019] mb-6">Final Step</h4>
-                <h2 class="text-4xl md:text-7xl font-[800] text-white tracking-tight mb-8 leading-tight">Ready to Digitalize <br><span
-                        class="text-slate-500">Your Urban Life.</span></h2>
+                <h2 class="text-4xl md:text-7xl font-[800] text-white tracking-tight mb-8 leading-tight">Ready to
+                    Digitalize <br><span class="text-slate-500">Your Urban Life.</span></h2>
                 <div class="h-1 w-24 bg-[#FC8019] mx-auto rounded-full"></div>
             </div>
- 
+
 
             <div class="mt-16 md:mt-24 text-center">
                 <p class="text-slate-500 font-bold uppercase tracking-[0.4em] text-[10px] md:text-xs px-4">Access
@@ -652,11 +677,20 @@
                             <h5 class="text-[10px] font-black text-slate-300 uppercase tracking-[0.4em] mb-6">Governance
                             </h5>
                             <ul class="text-sm font-bold text-[#282C3F] space-y-3">
-                                <li class="hover:text-[#FC8019] cursor-pointer transition-colors">Public Manifesto</li>
-                                <li class="hover:text-[#FC8019] cursor-pointer transition-colors">Citizen Rights</li>
-                                <li class="hover:text-[#FC8019] cursor-pointer transition-colors">Data Privacy</li>
-                                <li class="hover:text-[#FC8019] cursor-pointer transition-colors">Ethics Board</li>
+                                <li>
+                                    <a href="./privacyPolicy.html"
+                                        class="hover:text-[#FC8019] cursor-pointer transition-colors">
+                                        Privacy Policy
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="./term&condition.html"
+                                        class="hover:text-[#FC8019] cursor-pointer transition-colors">
+                                        Terms and Conditions
+                                    </a>
+                                </li>
                             </ul>
+
                         </div>
                         <div>
                             <h5 class="text-[10px] font-black text-slate-300 uppercase tracking-[0.4em] mb-6">Contact
@@ -671,4 +705,5 @@
         </div>
     </footer>
 </body>
+
 </html>
